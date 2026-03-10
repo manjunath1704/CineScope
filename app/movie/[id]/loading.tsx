@@ -2,7 +2,7 @@ import { Skeleton } from "@/components/movies/skeleton"
 
 export default function MovieDetailsLoading() {
   return (
-    <main className="mx-auto flex min-h-screen w-full max-w-6xl flex-col gap-8 px-4 py-8 sm:px-6 lg:px-8">
+    <main className="mx-auto flex min-h-screen w-full max-w-7xl flex-col gap-8 px-4 py-8 sm:px-6 lg:px-8">
       <Skeleton className="h-4 w-28" />
 
       <section className="grid gap-8 md:grid-cols-[300px_1fr]">

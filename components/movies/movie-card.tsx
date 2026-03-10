@@ -1,7 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 
-import { MovieActions } from "@/components/movies/movie-actions"
+//import { MovieActions } from "@/components/movies/movie-actions"
 import { MovieSummary, getImageUrl } from "@/lib/tmdb"
 
 type MovieCardProps = {
@@ -39,14 +39,14 @@ export function MovieCard({ movie }: MovieCardProps) {
 
         <p className="line-clamp-3 text-sm text-muted-foreground">{movie.overview || "No overview available."}</p>
 
-        <MovieActions
+        {/* <MovieActions
           movie={{
             id: movie.id,
             title: movie.title,
             posterPath: movie.poster_path,
             releaseDate: movie.release_date,
           }}
-        />
+        /> */}
       </div>
     </article>
   )

@@ -2,8 +2,14 @@
 
 import Link from "next/link"
 import { usePathname, useRouter, useSearchParams } from "next/navigation"
+import { Bungee } from "next/font/google"
 import { Search } from "lucide-react"
 import { useRef, useTransition } from "react"
+
+const bungee = Bungee({
+  subsets: ["latin"],
+  weight: "400",
+})
 
 export function GlobalNavbar() {
   const router = useRouter()
@@ -41,7 +47,10 @@ export function GlobalNavbar() {
   return (
     <header className="sticky top-0 z-50 border-b border-border/60 bg-background/95 backdrop-blur">
       <div className="mx-auto flex h-16 w-full max-w-7xl items-center gap-3 px-4 sm:px-6 lg:px-8">
-        <Link href="/" className="shrink-0 text-lg font-semibold tracking-tight">
+        <Link
+          href="/"
+          className={`${bungee.className} shrink-0 text-4xl tracking-tight text-yellow-500`}
+        >
           CineScope
         </Link>
 

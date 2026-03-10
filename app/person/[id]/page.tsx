@@ -123,7 +123,7 @@ export default async function PersonPage({ params }: PersonPageProps) {
   const avatar = getImageUrl(person.profile_path, "w500")
 
   return (
-    <main className="mx-auto flex min-h-screen w-full max-w-6xl flex-col gap-8 px-4 py-8 sm:px-6 lg:px-8">
+    <main className="mx-auto flex min-h-screen w-full max-w-7xl flex-col gap-8 px-4 py-8 sm:px-6 lg:px-8">
       <div>
         <Link href="/" className="text-sm text-muted-foreground underline underline-offset-4">
           Back to movies
