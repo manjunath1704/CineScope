@@ -1,4 +1,4 @@
-import { Geist, Geist_Mono } from "next/font/google"
+import { Geist_Mono, Oswald, Source_Sans_3 } from "next/font/google"
 import type { Metadata } from "next"
 import { Suspense } from "react"
 
@@ -7,9 +7,14 @@ import { GlobalNavbar } from "@/components/movies/global-navbar"
 import { ThemeProvider } from "@/components/theme-provider"
 import { cn } from "@/lib/utils";
 
-const fontSans = Geist({
+const fontSans = Source_Sans_3({
   subsets: ["latin"],
   variable: "--font-sans",
+})
+
+const fontDisplay = Oswald({
+  subsets: ["latin"],
+  variable: "--font-display",
 })
 
 const fontMono = Geist_Mono({
@@ -46,10 +51,16 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html
+      <html
       lang="en"
       suppressHydrationWarning
-      className={cn("antialiased", fontMono.variable, "font-sans", fontSans.variable)}
+      className={cn(
+        "antialiased",
+        fontMono.variable,
+        "font-sans",
+        fontSans.variable,
+        fontDisplay.variable,
+      )}
     >
       <body>
         <ThemeProvider>

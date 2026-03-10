@@ -49,7 +49,7 @@ export function GlobalNavbar() {
       <div className="mx-auto flex h-16 w-full max-w-7xl items-center gap-3 px-4 sm:px-6 lg:px-8">
         <Link
           href="/"
-          className={`${bungee.className} shrink-0 text-4xl tracking-tight text-yellow-500`}
+          className={`${bungee.className} shrink-0 text-4xl tracking-tight `}
         >
           CineScope
         </Link>

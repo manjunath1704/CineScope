@@ -3,7 +3,6 @@ import Link from "next/link"
 import { notFound } from "next/navigation"
 import type { Metadata } from "next"
 
-import { MovieActions } from "@/components/movies/movie-actions"
 import {
   getImageUrl,
   getMovieCredits,
@@ -223,14 +222,14 @@ export default async function MovieDetailsPage({ params }: MovieDetailsPageProps
 
           <p className="max-w-3xl leading-7 text-muted-foreground">{movie.overview || "No overview available."}</p>
 
-          <MovieActions
+          {/* <MovieActions
             movie={{
               id: movie.id,
               title: movie.title,
               posterPath: movie.poster_path,
               releaseDate: movie.release_date,
             }}
-          />
+          /> */}
 
           <div className="grid gap-3 rounded-xl border border-border bg-card p-4 text-sm text-muted-foreground sm:grid-cols-2">
             <p>Status: {movie.status || "Unknown"}</p>
