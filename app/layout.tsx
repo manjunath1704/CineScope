@@ -3,6 +3,7 @@ import type { Metadata } from "next"
 import { Suspense } from "react"
 
 import "./globals.css"
+import { RouteTransition } from "@/components/layout/route-transition"
 import { GlobalNavbar } from "@/components/movies/global-navbar"
 import { ThemeProvider } from "@/components/theme-provider"
 import { cn } from "@/lib/utils";
@@ -77,7 +78,7 @@ export default function RootLayout({
           >
             <GlobalNavbar />
           </Suspense>
-          {children}
+          <RouteTransition>{children}</RouteTransition>
         </ThemeProvider>
       </body>
     </html>
