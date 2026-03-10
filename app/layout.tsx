@@ -1,5 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google"
 import type { Metadata } from "next"
+import { Suspense } from "react"
 
 import "./globals.css"
 import { GlobalNavbar } from "@/components/movies/global-navbar"
@@ -52,7 +53,19 @@ export default function RootLayout({
     >
       <body>
         <ThemeProvider>
-          <GlobalNavbar />
+          <Suspense
+            fallback={
+              <header className="sticky top-0 z-50 border-b border-border/60 bg-background/95 backdrop-blur">
+                <div className="mx-auto flex h-16 w-full max-w-7xl items-center px-4 sm:px-6 lg:px-8">
+                  <span className="text-lg font-semibold tracking-tight">
+                    CineScope
+                  </span>
+                </div>
+              </header>
+            }
+          >
+            <GlobalNavbar />
+          </Suspense>
           {children}
         </ThemeProvider>
       </body>
