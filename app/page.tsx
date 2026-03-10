@@ -41,9 +41,9 @@ export default async function HomePage({ searchParams }: HomePageProps) {
       <main className="mx-auto flex min-h-screen w-full max-w-7xl flex-col gap-8 px-4 py-8 sm:px-6 lg:px-8">
         <header className="space-y-3">
           <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">CineScope</p>
-          <h1 className="text-3xl font-bold sm:text-4xl">Movie Details App</h1>
+          <h1 className="text-3xl font-bold sm:text-4xl">Movie Discovery Platform</h1>
           <p className="max-w-3xl text-sm text-muted-foreground sm:text-base">
-            Built with Next.js SSR + TMDB API. Search for movies and open full details pages.
+            Explore trusted movie data powered by TMDB, including cast, trailers, and detailed title insights.
           </p>
         </header>
 
@@ -66,9 +66,9 @@ export default async function HomePage({ searchParams }: HomePageProps) {
     <main className="mx-auto flex min-h-screen w-full max-w-7xl flex-col gap-8 px-4 py-8 sm:px-6 lg:px-8">
       <header className="space-y-3">
         <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">CineScope</p>
-        <h1 className="text-3xl font-bold sm:text-4xl">Movie Details App</h1>
+        <h1 className="text-3xl font-bold sm:text-4xl">Movie Discovery Platform</h1>
         <p className="max-w-3xl text-sm text-muted-foreground sm:text-base">
-          Built with Next.js SSR + TMDB API. Search for movies and open full details pages.
+          Explore trusted movie data powered by TMDB, including cast, trailers, and detailed title insights.
         </p>
       </header>
 
