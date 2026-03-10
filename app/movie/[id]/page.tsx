@@ -147,6 +147,16 @@ export default async function MovieDetailsPage({ params }: MovieDetailsPageProps
   }
 
   const posterUrl = getImageUrl(movie.poster_path, "w500")
+  const ratingText =
+    typeof movie.vote_average === "number" ? `${movie.vote_average.toFixed(1)}/10` : "N/A"
+  const votesText =
+    typeof movie.vote_count === "number" ? movie.vote_count.toLocaleString() : "N/A"
+  const languageText =
+    typeof movie.original_language === "string" && movie.original_language
+      ? movie.original_language.toUpperCase()
+      : "N/A"
+  const popularityText =
+    typeof movie.popularity === "number" ? movie.popularity.toFixed(1) : "N/A"
 
   const formatCurrency = (value: number) => {
     if (!value) {
@@ -161,13 +171,15 @@ export default async function MovieDetailsPage({ params }: MovieDetailsPageProps
   }
 
   return (
-    <main className="mx-auto flex min-h-screen w-full max-w-6xl flex-col gap-8 px-4 py-8 sm:px-6 lg:px-8">
+    <main className="mx-auto flex min-h-screen w-full max-w-7xl flex-col gap-8 px-4 py-8 sm:px-6 lg:px-8">
+      
+
+     
       <div>
         <Link href="/" className="text-sm text-muted-foreground underline underline-offset-4">
           Back to movies
         </Link>
       </div>
-
       <section className="grid gap-8 md:grid-cols-[300px_1fr]">
         <div>
           {posterUrl ? (
@@ -196,9 +208,9 @@ export default async function MovieDetailsPage({ params }: MovieDetailsPageProps
             <span>•</span>
             <span>Runtime: {movie.runtime ? `${movie.runtime} min` : "Unknown"}</span>
             <span>•</span>
-            <span>Rating: {movie.vote_average.toFixed(1)}/10</span>
+            <span>Rating: {ratingText}</span>
             <span>•</span>
-            <span>{movie.vote_count.toLocaleString()} votes</span>
+            <span>{votesText} votes</span>
           </div>
 
           <div className="flex flex-wrap gap-2">
@@ -223,8 +235,8 @@ export default async function MovieDetailsPage({ params }: MovieDetailsPageProps
           <div className="grid gap-3 rounded-xl border border-border bg-card p-4 text-sm text-muted-foreground sm:grid-cols-2">
             <p>Status: {movie.status || "Unknown"}</p>
             <p>Original title: {movie.original_title || movie.title}</p>
-            <p>Original language: {movie.original_language.toUpperCase()}</p>
-            <p>Popularity score: {movie.popularity.toFixed(1)}</p>
+            <p>Original language: {languageText}</p>
+            <p>Popularity score: {popularityText}</p>
             <p>Budget: {formatCurrency(movie.budget)}</p>
             <p>Revenue: {formatCurrency(movie.revenue)}</p>
           </div>
@@ -247,6 +259,8 @@ export default async function MovieDetailsPage({ params }: MovieDetailsPageProps
           <p className="text-sm text-muted-foreground">No trailer available.</p>
         )}
       </section>
+
+    
 
       <section className="space-y-4">
         <h2 className="text-2xl font-semibold">Top Cast</h2>
@@ -317,7 +331,9 @@ export default async function MovieDetailsPage({ params }: MovieDetailsPageProps
                     <p className="line-clamp-1 text-sm font-medium">{recommendedMovie.title}</p>
                     <p className="text-xs text-muted-foreground">
                       {recommendedMovie.release_date || "Unknown"} •{" "}
-                      {recommendedMovie.vote_average.toFixed(1)}/10
+                      {typeof recommendedMovie.vote_average === "number"
+                        ? `${recommendedMovie.vote_average.toFixed(1)}/10`
+                        : "N/A"}
                     </p>
                   </div>
                 </Link>

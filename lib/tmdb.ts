@@ -40,9 +40,17 @@ function getTmdbAuth(): TmdbAuth {
   )
 }
 
-async function tmdbFetch<T>(path: string, query: Record<string, string> = {}) {
+async function tmdbFetch<T>(
+  path: string,
+  query: Record<string, string> = {},
+  options: { includeLanguage?: boolean } = {},
+) {
   const auth = getTmdbAuth()
-  const params = new URLSearchParams({ language: "en-US", ...query })
+  const includeLanguage = options.includeLanguage ?? true
+  const params = new URLSearchParams({
+    ...(includeLanguage ? { language: "en-US" } : {}),
+    ...query,
+  })
 
   if (auth.kind === "api-key") {
     params.set("api_key", auth.value)
@@ -79,6 +87,10 @@ async function tmdbFetch<T>(path: string, query: Record<string, string> = {}) {
       if (attempt >= retries) {
         if (error instanceof TmdbHttpError) {
           throw error
+        }
+
+        if (error instanceof Error && error.message) {
+          throw new TmdbNetworkError(error.message)
         }
 
         throw new TmdbNetworkError("Unable to reach TMDB. Please try again.")
@@ -190,6 +202,36 @@ export async function getMovieVideos(movieId: number) {
 
 export async function getMovieRecommendations(movieId: number) {
   return tmdbFetch<MovieListResponse>(`/movie/${movieId}/recommendations`)
+}
+
+export type MovieImagesResponse = {
+  id: number
+  backdrops: Array<{
+    file_path: string
+    width: number
+    height: number
+    vote_average: number
+  }>
+  posters: Array<{
+    file_path: string
+    width: number
+    height: number
+    vote_average: number
+  }>
+  logos: Array<{
+    file_path: string
+    width: number
+    height: number
+    vote_average: number
+  }>
+}
+
+export async function getMovieImages(movieId: number) {
+  return tmdbFetch<MovieImagesResponse>(
+    `/movie/${movieId}/images`,
+    { include_image_language: "en,null" },
+    { includeLanguage: false },
+  )
 }
 
 export type PersonDetails = {
